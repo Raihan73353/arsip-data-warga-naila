@@ -52,13 +52,13 @@
                             <input type="text" name="agama" class="form-control" value="{{ $ktp->agama }}">
                         </div>
                         <div class="form-group">
-                            <label>Status Perkawinan</label>
-                            <select name="status_perkawinan" class="form-control">
+                            
+                            <label>Status Dalam Keluarga</label>
+                            <select name="status" class="form-control">
                                 <option value="">-- Pilih --</option>
-                                <option value="Belum Kawin" {{ $ktp->status_perkawinan == 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
-                                <option value="Kawin" {{ $ktp->status_perkawinan == 'Kawin' ? 'selected' : '' }}>Kawin</option>
-                                <option value="Cerai Hidup" {{ $ktp->status_perkawinan == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
-                                <option value="Cerai Mati" {{ $ktp->status_perkawinan == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
+                                <option value="Kepala Keluarga" {{ $ktp->status == 'Kepala Keluarga' ? 'selected' : '' }}>Kepala Keluarga</option>
+                                <option value="Isteri" {{ $ktp->status == 'Isteri' ? 'selected' : '' }}>Isteri</option>
+                                <option value="Anak" {{ $ktp->status == 'Anak' ? 'selected' : '' }}>Anak</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -77,19 +77,39 @@
                             <label>Nama Ibu</label>
                             <input type="text" name="nama_ibu" class="form-control" value="{{ $ktp->nama_ibu }}">
                         </div>
-                        <div class="form-group">
-                            <label>Berlaku Hingga</label>
-                            <input type="date" name="berlaku_hingga" class="form-control" value="{{ $ktp->berlaku_hingga }}">
-                        </div>
-                        <div class="form-group">
-                            <label>File Scan KTP</label>
-                            <input type="file" name="file_scan" class="form-control-file" accept=".pdf,.jpg,.jpeg,.png,.webp">
-                            @if ($ktp->file_scan)
-                                <p class="mt-2">
-                                    File saat ini: <a href="{{ asset('storage/' . $ktp->file_scan) }}" target="_blank">Lihat File</a>
-                                </p>
-                            @endif
-                        </div>
+                    
+                    <div class="form-group">
+                        <label>File Scan KTP</label>
+                        <input type="file" name="file_scan" class="form-control-file" accept=".pdf,.jpg,.jpeg,.png,.webp">
+                        @if ($ktp->file_scan)
+                        <p class="mt-2">
+                            File saat ini: <a href="{{ asset('storage/' . $ktp->file_scan) }}" target="_blank">Lihat File</a>
+                        </p>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                    <label>Berlaku Hingga (abaikan jika kamu belum mempunyai ktp)</label>
+                    <input 
+                        type="date" 
+                        name="berlaku_hingga" 
+                        id="berlaku_hingga" 
+                        class="form-control"
+                        value="{{ $ktp->berlaku_hingga != 'seumur hidup' ? $ktp->berlaku_hingga : '' }}"
+                        {{ $ktp->berlaku_hingga == 'seumur hidup' ? 'disabled' : '' }}
+                    >
+
+                    <div class="form-check mt-2">
+                        <input 
+                            type="checkbox" 
+                            id="seumur_hidup"
+                            name="berlaku_hingga"
+                            value="seumur hidup"
+                            class="form-check-input"
+                            {{ $ktp->berlaku_hingga == 'seumur hidup' ? 'checked' : '' }}
+                        >
+                        <label for="seumur_hidup" class="form-check-label">Seumur Hidup</label>
+                    </div>
+                </div>
                     </div>
                 </div>
 
@@ -101,4 +121,20 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkbox = document.getElementById('seumur_hidup');
+    const inputTanggal = document.getElementById('berlaku_hingga');
+
+    checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+            inputTanggal.disabled = true;
+            inputTanggal.value = ''; // hapus tanggal
+        } else {
+            inputTanggal.disabled = false;
+        }
+    });
+});
+</script>
 @endsection

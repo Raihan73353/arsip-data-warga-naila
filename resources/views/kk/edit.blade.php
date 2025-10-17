@@ -16,10 +16,7 @@
                             <label>No KK</label>
                             <input type="text" name="no_kk" class="form-control" value="{{ $kk->no_kk }}" required>
                         </div>
-                        <div class="form-group">
-                            <label>Nama Kepala Keluarga</label>
-                            <input type="text" name="nama_kepala_keluarga" class="form-control" value="{{ $kk->nama_kepala_keluarga }}" required>
-                        </div>
+                        
                         <div class="form-group">
                             <label>Alamat</label>
                             <textarea name="alamat" class="form-control" rows="3" required>{{ $kk->alamat }}</textarea>
@@ -32,13 +29,13 @@
                             <label>RW</label>
                             <input type="text" name="rw" class="form-control" value="{{ $kk->rw }}">
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Kelurahan</label>
                             <input type="text" name="kelurahan" class="form-control" value="{{ $kk->kelurahan }}">
                         </div>
+                    </div>
+
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Kecamatan</label>
                             <input type="text" name="kecamatan" class="form-control" value="{{ $kk->kecamatan }}">

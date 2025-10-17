@@ -11,7 +11,7 @@
         <div class="card-body">
             <table class="table table-bordered">
                 <tr><th>No KK</th><td>{{ $kk->no_kk }}</td></tr>
-                <tr><th>Nama Kepala Keluarga</th><td>{{ $kk->nama_kepala_keluarga }}</td></tr>
+                <tr><th>Nama Kepala Keluarga</th><td>{{ $kepalaKeluarga->nama ?? '-'}}</td></tr>
                 <tr><th>Alamat</th><td>{{ $kk->alamat }}</td></tr>
                 <tr><th>RT / RW</th><td>{{ $kk->rt }} / {{ $kk->rw }}</td></tr>
                 <tr><th>Kelurahan</th><td>{{ $kk->kelurahan }}</td></tr>
@@ -36,7 +36,7 @@
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <h6 class="text-primary mb-0">Anggota Keluarga</h6>
                 <a href="{{ route('ktp.create', ['kk_id' => $kk->id]) }}" class="btn btn-success btn-sm">
-                    <i class="fas fa-plus-circle"></i> Tambah KTP
+                    <i class="fas fa-plus-circle"></i> Tambah Anggota Keluarga
                 </a>
             </div>
 
@@ -47,7 +47,7 @@
                         <th>Nama</th>
                         <th>NIK</th>
                         <th>Jenis Kelamin</th>
-                        <th>Status Perkawinan</th>
+                        <th>Status Dalam Keluarga</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -58,7 +58,7 @@
                             <td>{{ $a->nama }}</td>
                             <td>{{ $a->nik }}</td>
                             <td>{{ $a->jenis_kelamin }}</td>
-                            <td>{{ $a->status_perkawinan }}</td>
+                            <td>{{ $a->status }}</td>
                             <td>
                                 <a href="{{ route('ktp.show', $a->id) }}" class="btn btn-sm btn-info">Lihat</a>
                                 <a href="{{ route('ktp.edit', $a->id) }}" class="btn btn-sm btn-warning">Edit</a>

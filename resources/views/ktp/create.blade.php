@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header bg-success text-white">
-            <h5 class="mb-0">Tambah Anggota Keluarga (KTP)</h5>
+            <h5 class="mb-0">Tambah Anggota Keluarga </h5>
         </div>
         <div class="card-body">
             <form action="{{ route('ktp.store') }}" method="POST" enctype="multipart/form-data">
@@ -41,10 +41,6 @@
                             <label>Golongan Darah</label>
                             <input type="text" name="golongan_darah" class="form-control" maxlength="3">
                         </div>
-                        <div class="form-group">
-                            <label>Alamat</label>
-                            <textarea name="alamat" class="form-control" rows="2"></textarea>
-                        </div>
                     </div>
 
                     <div class="col-md-6">
@@ -53,13 +49,12 @@
                             <input type="text" name="agama" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Status Perkawinan</label>
-                            <select name="status_perkawinan" class="form-control">
+                            <label>Status Dalam Keluarga</label>
+                            <select name="status" class="form-control">
                                 <option value="">-- Pilih --</option>
-                                <option value="Belum Kawin">Belum Kawin</option>
-                                <option value="Kawin">Kawin</option>
-                                <option value="Cerai Hidup">Cerai Hidup</option>
-                                <option value="Cerai Mati">Cerai Mati</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Isteri">Isteri</option>
+                                <option value="Anak">Anak</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -79,12 +74,17 @@
                             <input type="text" name="nama_ibu" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Berlaku Hingga</label>
-                            <input type="date" name="berlaku_hingga" class="form-control">
+                            <label>File Scan KTP (jika ktp sudah tersedia)</label>
+                            <input type="file" name="file_scan" class="form-control-file" accept=".pdf,.jpg,.jpeg,.png,.webp">
                         </div>
                         <div class="form-group">
-                            <label>File Scan KTP</label>
-                            <input type="file" name="file_scan" class="form-control-file" accept=".pdf,.jpg,.jpeg,.png,.webp">
+                            <label>Berlaku Hingga (abaikan jika kamu belum mempunyai ktp)</label>
+                            <input type="date" name="berlaku_hingga" class="form-control" id="berlaku_hingga">
+
+                            <div class="form-check mt-2">
+                                <input type="checkbox" name="berlaku_hingga" id="seumur_hidup" value="seumur hidup" class="form-check-input">
+                                <label for="seumur_hidup" class="form-check-label">Seumur Hidup</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,4 +97,15 @@
         </div>
     </div>
 </div>
+<script>
+document.getElementById('seumur_hidup').addEventListener('change', function() {
+    const input = document.getElementById('berlaku_hingga');
+    if (this.checked) {
+        input.value = ''; // hapus tanggal
+        input.disabled = true;
+    } else {
+        input.disabled = false;
+    }
+});
+</script>
 @endsection

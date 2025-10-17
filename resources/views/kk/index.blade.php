@@ -25,7 +25,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $kk->no_kk }}</td>
-                            <td>{{ $kk->nama_kepala_keluarga ?? '-' }}</td>
+                            <td>{{ $kk->kepalaKeluarga->nama ?? '-' }}</td>
                             <td>{{ $kk->alamat }}</td>
                             <td>{{ $kk->kecamatan }}</td>
                             <td>{{ $kk->kabupaten }}</td>

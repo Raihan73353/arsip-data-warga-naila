@@ -17,10 +17,6 @@
                             <input type="text" name="no_kk" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Nama Kepala Keluarga</label>
-                            <input type="text" name="nama_kepala_keluarga" class="form-control" required>
-                        </div>
-                        <div class="form-group">
                             <label>Alamat</label>
                             <textarea name="alamat" class="form-control" rows="3" required></textarea>
                         </div>

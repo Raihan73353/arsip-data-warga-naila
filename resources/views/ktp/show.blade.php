@@ -38,8 +38,8 @@
                     <td>{{ $ktp->agama ?? '-' }}</td>
                 </tr>
                 <tr>
-                    <th>Status Perkawinan</th>
-                    <td>{{ $ktp->status_perkawinan ?? '-' }}</td>
+                    <th>Status</th>
+                    <td>{{ $ktp->status ?? '-' }}</td>
                 </tr>
                 <tr>
                     <th>Pekerjaan</th>
@@ -59,7 +59,7 @@
                 </tr>
                 <tr>
                     <th>Berlaku Hingga</th>
-                    <td>{{ $ktp->berlaku_hingga ? \Carbon\Carbon::parse($ktp->berlaku_hingga)->format('d-m-Y') : 'Seumur Hidup' }}</td>
+                    <td>{{ $ktp->berlaku_hingga ?? '-' }}</td>
                 </tr>
                 <tr>
                     <th>Nomor Kartu Keluarga</th>

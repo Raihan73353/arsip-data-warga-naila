@@ -7,7 +7,7 @@
 
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -21,39 +21,12 @@
         <div id="collapsePendaftaran" class="collapse" aria-labelledby="headingPendaftaran"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">KK</a>
-                <a class="collapse-item" href="#">Warga</a>
-                <a class="collapse-item" href="#">KTP</a>
-                <a class="collapse-item" href="#">AKTE LAHIR</a>
+                <a class="collapse-item" href="{{ route('kk.index') }}">KK</a>
+                <a class="collapse-item" href="{{ route('akte_nikah.index') }}">AKTE NIKAH</a>
             </div>
         </div>
     </li>
 
-    {{-- halaman create data warga --}}
-     <hr class="sidebar-divider my-0">
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePendaftaran2"
-            aria-expanded="false" aria-controls="collapsePendaftaran2">
-            <i class="fas fa-fw fa-clipboard-list"></i>
-            <span>+ DATA WARGA</span>
-        </a>
-        <div id="collapsePendaftaran2" class="collapse" aria-labelledby="headingPendaftaran"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">KK</a>
-                <a class="collapse-item" href="#">Warga</a>
-                <a class="collapse-item" href="#">KTP</a>
-                <a class="collapse-item" href="#">AKTE LAHIR</a>
-            </div>
-        </div>
-    </li>
-
-        {{-- <hr class="sidebar-divider my-0">
-     <li class="nav-item active">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-clipboard-list"></i>
-            <span>Laporan</span>
-        </a> --}}
         <hr class="sidebar-divider my-0">
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('users.index') }}">

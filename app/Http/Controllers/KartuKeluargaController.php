@@ -14,8 +14,11 @@ class KartuKeluargaController extends Controller
      */
     public function index()
     {
-        $data = KartuKeluarga::latest()->paginate(10);
+        // $data = KartuKeluarga::latest()->paginate(10);
+        $data = KartuKeluarga::with(['anggotas', 'kepalaKeluarga'])->latest()->paginate(10);
+
         return view('kk.index', compact('data'));
+        // $kepalaKeluarga = Ktp::where('id', $data->kepala_keluarga_id)->first();
     }
 
     /**
@@ -33,7 +36,6 @@ class KartuKeluargaController extends Controller
     {
         $request->validate([
             'no_kk' => 'required|string|unique:kartu_keluargas,no_kk',
-            'nama_kepala_keluarga' => 'required|string|max:100',
             'alamat' => 'required|string|max:255',
             'rt' => 'nullable|string|max:5',
             'rw' => 'nullable|string|max:5',
@@ -48,7 +50,6 @@ class KartuKeluargaController extends Controller
 
         $data = $request->only([
             'no_kk',
-            'nama_kepala_keluarga',
             'alamat',
             'rt',
             'rw',
@@ -76,9 +77,10 @@ class KartuKeluargaController extends Controller
     public function show($id)
     {
         $kk = KartuKeluarga::findOrFail($id);
+        $kepalaKeluarga = Ktp::where('id', $kk->kepala_keluarga_id)->first();
         $anggota = Ktp::where('kartu_keluarga_id', $kk->id)->get();
 
-        return view('kk.show', compact('kk', 'anggota'));
+        return view('kk.show', compact('kk', 'anggota', 'kepalaKeluarga'));
     }
 
     /**
@@ -99,11 +101,10 @@ class KartuKeluargaController extends Controller
         $kk = KartuKeluarga::findOrFail($id);
 
         $request->validate([
-            'no_kk' => 'required|string|unique:kartu_keluargas,no_kk,' . $kk->id,
-            'nama_kepala_keluarga' => 'required|string|max:100',
+
             'alamat' => 'required|string|max:255',
-            'rt' => 'nullable|string|max:5',
-            'rw' => 'nullable|string|max:5',
+            'rt' => 'nullable|string',
+            'rw' => 'nullable|string',
             'kelurahan' => 'nullable|string|max:100',
             'kecamatan' => 'nullable|string|max:100',
             'kabupaten' => 'nullable|string|max:100',
@@ -112,10 +113,8 @@ class KartuKeluargaController extends Controller
             'tanggal_terbit' => 'nullable|date',
             'file_scan' => 'nullable|file|mimes:pdf,webp,jpg,jpeg,png|max:20480',
         ]);
-
         $data = $request->only([
             'no_kk',
-            'nama_kepala_keluarga',
             'alamat',
             'rt',
             'rw',

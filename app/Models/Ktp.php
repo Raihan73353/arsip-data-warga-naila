@@ -9,8 +9,8 @@ class Ktp extends Model
     //
         protected $fillable = [
         'kartu_keluarga_id', 'nik', 'nama', 'tempat_lahir', 'tanggal_lahir',
-        'jenis_kelamin', 'golongan_darah', 'alamat', 'agama',
-        'status_perkawinan', 'pekerjaan', 'kewarganegaraan',
+        'jenis_kelamin', 'golongan_darah', 'alamat','rt','rw','kelurahan','kecamatan','kabupaten','provinsi', 'agama',
+        'status', 'pekerjaan', 'kewarganegaraan',
         'nama_ayah', 'nama_ibu', 'berlaku_hingga', 'file_scan'
     ];
 

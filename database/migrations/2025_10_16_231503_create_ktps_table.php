@@ -21,13 +21,19 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('golongan_darah', 3)->nullable();
             $table->text('alamat')->nullable();
+            $table->string('rt', 5)->nullable();
+            $table->string('rw', 5)->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kabupaten')->nullable();
+            $table->string('provinsi')->nullable();
             $table->string('agama')->nullable();
-            $table->string('status_perkawinan')->nullable();
+            $table->string('status')->nullable();
             $table->string('pekerjaan')->nullable();
             $table->string('kewarganegaraan')->default('WNI');
             $table->string('nama_ayah')->nullable();
             $table->string('nama_ibu')->nullable();
-            $table->date('berlaku_hingga')->nullable();
+            $table->string('berlaku_hingga')->nullable();
             $table->string('file_scan')->nullable(); // File hasil scan KTP
             $table->timestamps();
         });

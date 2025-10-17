@@ -38,7 +38,7 @@ class UserController extends Controller
     }
     public function editPassword()
     {
-        return view('index');
+        return view('user.password');
     }
 
     // 🔄 Proses ubah password

@@ -104,9 +104,9 @@
                 <form action="{{ route('login') }}" method="POST" class="user">
                     @csrf
                     <div class="form-group mb-3">
-                        <input type="text" name="username"
+                        <input type="text" name="email"
                                class="form-control"
-                               placeholder="Masukkan Username" required autofocus>
+                               placeholder="Masukkan email" required autofocus>
                     </div>
                     <div class="form-group mb-4">
                         <input type="password" name="password"

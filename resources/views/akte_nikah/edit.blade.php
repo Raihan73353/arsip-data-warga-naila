@@ -34,27 +34,16 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Suami</label>
-                        <select name="suami_ktp_id" class="form-control" required>
-                            <option value="">-- Pilih Suami --</option>
-                            @foreach ($suamiList as $ktp)
-                                <option value="{{ $ktp->id }}" {{ $akte->suami_ktp_id == $ktp->id ? 'selected' : '' }}>
-                                    {{ $ktp->nama }} ({{ $ktp->nik }})
-                                </option>
-                            @endforeach
-                        </select>
+                        <input type="text" name="suami_ktp_id" value="{{ old('suami_ktp_id', $akte->suami->nama) }}" class="form-control" readonly>
+                        <input type="hidden" name="suami_ktp_id" value="{{ old('suami_ktp_id', $akte->suami_ktp_id) }}" class="form-control">
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label>Istri</label>
-                        <select name="istri_ktp_id" class="form-control" required>
-                            <option value="">-- Pilih Istri --</option>
-                            @foreach ($istriList as $ktp)
-                                <option value="{{ $ktp->id }}" {{ $akte->istri_ktp_id == $ktp->id ? 'selected' : '' }}>
-                                    {{ $ktp->nama }} ({{ $ktp->nik }})
-                                </option>
-                            @endforeach
-                        </select>
+                        <label>Isteri</label>
+                        <input type="text" name="istri_ktp_id" value="{{ old('suami_ktp_id', $akte->istri->nama) }}" class="form-control" readonly>
+                        <input type="hidden" name="istri_ktp_id" value="{{ old('istri_ktp_id', $akte->istri_ktp_id) }}" class="form-control">
                     </div>
+
 
                     <div class="col-md-6 mb-3">
                         <label>File Scan Akte Nikah (opsional)</label>
