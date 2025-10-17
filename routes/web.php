@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KartuKeluargaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AkteNikahController;
 
 use App\Http\Controllers\KtpController;
 
@@ -11,6 +12,11 @@ use App\Http\Controllers\KtpController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::resource('akte_nikah', AkteNikahController::class);
+
 
 
 Route::resource('kk', KartuKeluargaController::class);
