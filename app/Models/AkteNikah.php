@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AkteNikah extends Model
 {
     //
-     use HasFactory;
+    use HasFactory;
 
     protected $fillable = [
         'suami_ktp_id',
@@ -25,6 +26,12 @@ class AkteNikah extends Model
     }
 
     public function istri()
+    {
+        return $this->belongsTo(Ktp::class, 'istri_ktp_id');
+    }
+
+
+    public function isteri()
     {
         return $this->belongsTo(Ktp::class, 'istri_ktp_id');
     }

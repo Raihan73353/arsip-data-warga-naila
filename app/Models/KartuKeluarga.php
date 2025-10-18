@@ -47,4 +47,9 @@ class KartuKeluarga extends Model
 
         return $kodeDaerah . $tanggal . $acak;
     }
+
+    public function isteri()
+    {
+        return $this->belongsTo(Ktp::class, 'isteri_id');
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AkteNikahController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
 
 use App\Http\Controllers\KtpController;
 
@@ -15,6 +16,7 @@ Route::get('/', function () {
 });
 
 
+Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 
 Route::resource('akte_nikah', AkteNikahController::class)->middleware(\App\Http\Middleware\CheckLogin::class);;
 
